@@ -1,3 +1,8 @@
+[submodule "source/submodules/spectrometer"]		
+	path = docs/submodules/spectrometer		
+	url = ../spectrometer		
+	branch = master		
+	ignore = dirty
 [submodule "docs/submodules/integration/packaging"]
 	path = docs/submodules/integration/packaging
 	url = ../integration/packaging
