@@ -221,6 +221,31 @@ html_sidebars = {
 # implements a search results scorer. If empty, the default will be used.
 #html_search_scorer = 'scorer.js'
 
+def get_version_status():
+    """Returns whether the version a user a viewing the documentation
+       for is supported, deprecated or unsupported
+
+       Return values:
+         'unsupported': which won't receive even security updates
+         'deprecated': which will receive only secuirty updates
+         'supported': currently fully supported
+    """
+
+    versions = {
+        'Hydrogen': 'unsupported',
+        'Helium': 'unsupported',
+        'Lithium': 'unsupported',
+        'Beryllium': 'deprecated',
+        'Boron': 'supported',
+        'Carbon': 'supported',
+        'Nitrogen': 'supported'
+    }
+    return versions[version]
+
+html_context = dict(
+    version_status=get_version_status(),
+    )
+
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'OpenDaylightDocumentationdoc'
 
@@ -323,7 +348,7 @@ if platform.system() != 'Windows':
     # Build integration stuff
     import subprocess
 
-    # subprocess.call(["./build-integration-robot-libdoc.sh"])
+    subprocess.call(["./build-integration-robot-libdoc.sh"])
 
     # Disable javasphinx generation until we have a solution to long build
     # times. readthedocs timesout after 902 seconds.
