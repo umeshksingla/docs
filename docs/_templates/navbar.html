@@ -1,8 +1,18 @@
 <div id="navbar" class="{{ theme_navbar_class }} navbar-default {% if theme_navbar_fixed_top|tobool -%} navbar-fixed-top{%- endif -%}">
-  {# Outdated version warning banner #}
-  {% if status_of_this_version == 'unsupported' %}
-    <div id="outdated_warning" >
-      This document is for a deprecated release of Opendaylight that is no longer supported.
+  <!-- Outdated version warning banner -->
+    <span>{{ version }}</span>
+  {% if version_status == 'unsupported' %}
+    <div id="unsupported_warning" >
+      This document is for a release of Opendaylight that is no longer supported.
+    </div>
+    <style>
+      body {
+        padding-top: 110px;
+      }
+    </style>
+  {% elif version_status == 'deprecated' %}
+    <div id="deprecated_warning" >
+      This document is for a deprecated release of Opendaylight and will receive only security updates.
     </div>
     <style>
       body {
