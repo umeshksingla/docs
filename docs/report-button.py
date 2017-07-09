@@ -31,8 +31,8 @@ class ButtonDirective(Directive):
 		app = env.app
 
 		node = button_node()
-		node['link'] = self.option_spec['link']
-		node['text'] = self.option_spec['text']
+		node['link'] = self.options['link']
+		node['text'] = self.options['text']
 		return [node]
 
 
