@@ -41,6 +41,7 @@ def html_visit_button_node(self, node):
 	self.body.append(html)
 	raise nodes.SkipNode
 
+
 def setup(app):
 	app.add_node(button_node,
 		html=(html_visit_button_node, None))
