@@ -2,6 +2,7 @@ from __future__ import absolute_import
 from docutils import nodes
 import jinja2
 from sphinx.util.compat import Directive
+from docutils.parsers.rst import directives
 from docutils.parsers.rst.directives import unchanged
 
 BUTTON_TEMPLATE = jinja2.Template(u"""
@@ -36,12 +37,14 @@ class ButtonDirective(Directive):
 		return [node]
 
 
-def html_visit_button_node(self, node):
+def visit_button_node(self, node):
 	html = BUTTON_TEMPLATE.render(link=node['link'], text=node['text'])
 	self.body.append(html)
 	raise nodes.SkipNode
 
+
 def setup(app):
 	app.add_node(button_node,
-		html=(html_visit_button_node, None))
+		html=(visit_button_node, None))
 	app.add_directive('report-button', ButtonDirective)
+	directives.register_directive('report-button', ButtonDirective)

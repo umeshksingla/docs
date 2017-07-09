@@ -38,7 +38,7 @@ itself.
    developer-guide/index
 
 
-Content for OpenDaylight Contributors
+Content for OpenDaylight Contributors 
 -------------------------------------
 
 The following content is intended for developers who either currently
@@ -59,8 +59,8 @@ participate in the development of OpenDaylight or would like to start.
    submodules/netvirt/docs/contributor-guide/index
 
 .. report-button::
-   :text: Lolol
-   :link: google.com
+   :text: File a bug
+   :link: https://bugs.opendaylight.org
 
 .. Commenting the below out until we actually use it
 .. Indices and tables
