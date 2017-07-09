@@ -17,23 +17,24 @@
 }
 
 .report-button {
-    
-    background-color:#fab814;
-    border-radius:5px;
-    text-indent:0px;
-    border:1px solid #e65f44;
-    display:inline-block;
-    color:#dd4814;
-    font-family:Arial;
-    font-size:14px;
-    font-weight:bold;
-    font-style:normal;
-    height:45px;
-    line-height:45px;
-    width:121px;
-    text-decoration:none;
-    text-align:center;
+    background-color: #fab814;
+    border-radius: 5px;
+    text-indent: 0;
+    border: 1px solid #e65f44;
+    display: inline-block;
+    color: #dd4814;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 20px;
+    width: auto;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    float: right !important;
 }
+
 .report-button:hover {
     background-color:#f2ab1e;
 }
