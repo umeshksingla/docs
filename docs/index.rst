@@ -58,6 +58,10 @@ participate in the development of OpenDaylight or would like to start.
    submodules/infrautils/docs/index
    submodules/netvirt/docs/contributor-guide/index
 
+.. button::
+   :text: Lol
+   :link: google.com
+
 .. Commenting the below out until we actually use it
 .. Indices and tables
 .. ==================
