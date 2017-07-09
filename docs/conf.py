@@ -23,7 +23,7 @@ import sphinx_bootstrap_theme
 sys.path.insert(0, os.path.abspath('submodules/spectrometer/server'))
 sys.path.insert(0, os.path.abspath('.'))
 
-# -- General configuration ------------------------------------------------
+# -- General configuratgion ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
