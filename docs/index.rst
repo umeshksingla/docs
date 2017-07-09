@@ -59,8 +59,8 @@ participate in the development of OpenDaylight or would like to start.
    submodules/netvirt/docs/contributor-guide/index
 
 .. report-button::
-   :text: Lolol
-   :link: google.com
+   :text: "Lolol"
+   :link: "google.com"
 
 .. Commenting the below out until we actually use it
 .. Indices and tables

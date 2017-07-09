@@ -1,6 +1,8 @@
+from __future__ import absolute_import
 from docutils import nodes
 import jinja2
 from sphinx.util.compat import Directive
+from docutils.parsers.rst.directives import unchanged
 
 BUTTON_TEMPLATE = jinja2.Template(u"""
 	<a href="{{ link }}" class="report-button"> {{ text }} </a>
@@ -18,8 +20,8 @@ class ButtonDirective(Directive):
 	required_arguments = 0
 
 	option_spec = {
-	    'link': "",
-	    'text': ""
+	    'link': unchanged,
+	    'text': unchanged
 	}
 
 	def run(self):
