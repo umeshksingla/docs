@@ -212,7 +212,7 @@ html_sidebars = {
 #html_search_scorer = 'scorer.js'
 
 html_context = dict(
-    version_status='deprecated',
+    version_status='unsupported',
     )
 
 # Output file base name for HTML help builder.
