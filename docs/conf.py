@@ -222,8 +222,12 @@ html_sidebars = {
 # implements a search results scorer. If empty, the default will be used.
 #html_search_scorer = 'scorer.js'
 
+def here():
+    return 'um e s h'
+
 html_context = dict(
     version_status='supported',
+    here=here(),
     )
 
 # Output file base name for HTML help builder.

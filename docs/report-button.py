@@ -6,7 +6,32 @@ from docutils.parsers.rst import directives
 from docutils.parsers.rst.directives import unchanged
 
 BUTTON_TEMPLATE = jinja2.Template(u"""
-	<a href="{{ link }}" class="report-button"> {{ text }} </a>
+	<div class="row">
+		<div class="col-sm-4">
+			<button class="report-button" onclick="play()">
+				{{ text }}
+			</button>
+		</div>
+	</div>
+	<div class="row">
+		<div id="myForm" class="col-sm-8 bug-form">
+			<p style="padding-top: 8px">Your suggestion: </p>
+			<div>
+				<form>
+					<input
+						type="text"
+						placeholder="Summary"
+						name="summary">
+					<textarea
+						rows="5"
+						cols="60"
+						wrap="hard"
+						placeholder="Description"
+						name="description"></textarea>
+				</form>
+			</div>
+		</div>
+	</div>
 	""")
 
 class button_node(nodes.General, nodes.Element):
