@@ -1,38 +1,11 @@
 from __future__ import absolute_import
-from docutils import nodes
+import os
 import jinja2
+from docutils import nodes
 from sphinx.util.compat import Directive
 from docutils.parsers.rst import directives
 from docutils.parsers.rst.directives import unchanged
 
-BUTTON_TEMPLATE = jinja2.Template(u"""
-	<div class="row">
-		<div class="col-sm-4">
-			<button class="report-button" onclick="play()">
-				{{ text }}
-			</button>
-		</div>
-	</div>
-	<div class="row">
-		<div id="myForm" class="col-sm-8 bug-form">
-			<p style="padding-top: 8px">Your suggestion: </p>
-			<div>
-				<form>
-					<input
-						type="text"
-						placeholder="Summary"
-						name="summary">
-					<textarea
-						rows="5"
-						cols="60"
-						wrap="hard"
-						placeholder="Description"
-						name="description"></textarea>
-				</form>
-			</div>
-		</div>
-	</div>
-	""")
 
 class button_node(nodes.General, nodes.Element):
 	"""
@@ -62,8 +35,19 @@ class ButtonDirective(Directive):
 		return [node]
 
 
+def render(template, context):
+	path, filename = os.path.split(template)
+	return jinja2.Environment(
+		loader=jinja2.FileSystemLoader(path)
+	).get_template(filename).render(context)
+
+
 def visit_button_node(self, node):
-	html = BUTTON_TEMPLATE.render(link=node['link'], text=node['text'])
+	context = {
+		'link': node['link'],
+		'text': node['text'],
+	}
+	html = render('_templates/bug-form.html', context)
 	self.body.append(html)
 	raise nodes.SkipNode
 
