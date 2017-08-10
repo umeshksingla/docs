@@ -339,3 +339,6 @@ if platform.system() != 'Windows':
     if javasphinx_available:
         subprocess.call(["./generate-javaapidoc.sh"])
 
+
+def setup(app):
+    app.add_javascript('js/bug.js')

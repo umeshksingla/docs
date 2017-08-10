@@ -1,7 +1,7 @@
 console.log('umesh');
 console.log(window.location.href);
 
-function play(){
+function toggleFeedbackForm(){
     console.log("i'm playing");
     document.getElementById("myForm").classList.toggle("show");
 }

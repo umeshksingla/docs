@@ -1,29 +1,35 @@
-        <div class="row">
-                <div class="col-sm-4">
-                        <button class="report-button" onclick="play()">
-                                {{ text }}
-                        </button>
-                </div>
+<div class="row">
+    <div class="col-sm-4">
+        <button class="report-button" onclick="toggleFeedbackForm()">
+            {{ text }}
+        </button>
+    </div>
+</div>
+<div class="row">
+    <div id="myForm" class="col-sm-8 bug-form">
+        <p style="padding-top: 8px">Your suggestion: </p>
+        <div>
+		    <form>
+	            <input
+                    type="text"
+                    placeholder="Summary"
+                    name="summary">
+	            <textarea
+                    rows="5"
+                    cols="60"
+                    wrap="hard"
+                    placeholder="Description"
+                    name="description"></textarea>
+	            {% if logged_in %}
+		        <input
+                    type="submit"
+                    onclick="console.log('submitting')">Submit</input>
+		        {% else %}
+		        <button onclick="console.log('jira-ing')">
+			        Log In with JIRA to submit
+		        </button>
+		        {% endif %}
+		    </form>
         </div>
-        <div class="row">
-                <div id="myForm" class="col-sm-8 bug-form">
-                        <p style="padding-top: 8px">Your suggestion: </p>
-                        <div>
-                                <form>
-                                        <input
-                                                type="text"
-                                                placeholder="Summary"
-                                                name="summary">
-                                        <textarea
-                                                rows="5"
-                                                cols="60"
-                                                wrap="hard"
-                                                placeholder="Description"
-                                                name="description"></textarea>
-                                        <input
-                                                type="submit"
-                                                onclick="">Submit</input>
-                                </form>
-                        </div>
-                </div>
-        </div>
+    </div>
+</div>
