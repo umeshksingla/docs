@@ -9,27 +9,26 @@
     <div id="myForm" class="col-sm-8 bug-form">
         <p style="padding-top: 8px">Your suggestion: </p>
         <div>
-		    <form>
-	            <input
+	    <form>
+	        <input
                     type="text"
                     placeholder="Summary"
                     name="summary">
-	            <textarea
+	        <textarea
                     rows="5"
                     cols="60"
                     wrap="hard"
                     placeholder="Description"
                     name="description"></textarea>
-	            {% if logged_in %}
-		        <input
+	        <button
+                    id="submit-btn"
                     type="submit"
-                    onclick="console.log('submitting')">Submit</input>
-		        {% else %}
-		        <button onclick="console.log('jira-ing')">
-			        Log In with JIRA to submit
-		        </button>
-		        {% endif %}
-		    </form>
+                    onclick="console.log('submitting')">Submit</button>
+	        <button
+                    id="login-btn">
+                    Log In with JIRA to submit
+	        </button>
+	    </form>
         </div>
     </div>
 </div>
