@@ -12,8 +12,10 @@ function isLoggedInAPI() {
         "async": true,
         "crossDomain": true,
         "url": "https://jira.opnfv.org/rest/auth/1/session",
-        "method": "POST",
-        "headers": {}
+        "method": "GET",
+        "headers": {
+            "Access-Control-Allow-Origin": "*"
+        }
     }
 
     $.ajax(settings).done(function (response) {
