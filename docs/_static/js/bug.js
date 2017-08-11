@@ -51,7 +51,7 @@ function check_login() {
     var login_btn = document.getElementById("login-btn");
 
     logged_in = isLoggedInAPI();
-
+    console.log(logged_in);
     if (logged_in) {
         submit_btn.style.display = 'block';
         login_btn.style.display = 'none';
