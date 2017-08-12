@@ -1,5 +1,10 @@
 {# Import the theme's layout. #}
 {% extends "!layout.html" %}
 
+{% block extrahead %}
 {# Custom CSS override for warning banner #}
-{% set css_files = css_files + ['_static/css/custom.css'] %}
+
+<link rel="stylesheet" href="_static/css/custom.css" type="text/css"/>
+<script type="text/javascript" src="_static/js/bug.js"></script>
+
+{% endblock %}

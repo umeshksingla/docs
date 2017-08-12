@@ -341,4 +341,5 @@ if platform.system() != 'Windows':
 
 
 def setup(app):
-    app.add_javascript('js/bug.js')
+    pass
+    #app.add_javascript('js/bug.js')

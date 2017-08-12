@@ -1,6 +1,15 @@
 console.log('umesh');
 console.log(window.location.href);
 
+var baseUrl = "https://test-odl-docs.atlassian.net/rest";
+var authUrl = "/auth/1/session";
+
+$(document).ready(function(){
+    $("#login-btn").click(function(){
+        $("#myModal").modal();
+    });
+});
+
 function toggleFeedbackForm() {
     console.log("i'm playing");
     document.getElementById("myForm").classList.toggle("show");
@@ -11,11 +20,9 @@ function isLoggedInAPI() {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "https://jira.opnfv.org/rest/auth/1/session",
+        "url": baseUrl + authUrl,
         "method": "GET",
-        "headers": {
-            "Access-Control-Allow-Origin": "*"
-        }
+        "headers": {}
     }
 
     $.ajax(settings).done(function (response) {
@@ -52,7 +59,7 @@ function check_login() {
     var submit_btn = document.getElementById("submit-btn");
     var login_btn = document.getElementById("login-btn");
 
-    logged_in = isLoggedInAPI();
+    //logged_in = isLoggedInAPI();
     console.log(logged_in);
     if (logged_in) {
         submit_btn.style.display = 'block';
