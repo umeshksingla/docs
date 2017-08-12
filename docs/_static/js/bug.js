@@ -4,14 +4,15 @@ console.log(window.location.href);
 var baseUrl = "https://test-odl-docs.atlassian.net/rest";
 var authUrl = "/auth/1/session";
 
-$(document).ready(function(){
-    $("#login-btn").click(function(){
-        $("#myModal").modal();
-    });
-});
+function showLoginForm() {
+    //$.noConflict(true);
+    (function ($) {
+        $('#myModal').modal('show');
+    }
+    )(jQuery);
+}
 
 function toggleFeedbackForm() {
-    console.log("i'm playing");
     document.getElementById("myForm").classList.toggle("show");
     check_login();
 }
@@ -55,6 +56,7 @@ function check_login() {
 
     var logged_in = false;
     console.log('checking login');
+
 
     var submit_btn = document.getElementById("submit-btn");
     var login_btn = document.getElementById("login-btn");

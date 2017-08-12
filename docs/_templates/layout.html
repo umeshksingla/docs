@@ -9,13 +9,9 @@
   {% set bs_span_prefix = "span" %}
 {% endif %}
 
-{% set script_files = [
-    '_static/js/jquery-fix.js',
-    '_static/bootstrap-' + bootstrap_version + '/js/bootstrap.min.js',
-    '_static/bootstrap-sphinx.js',
-    '_static/js/bug.js']
-%}
-
 {# Custom CSS override for warning banner #}
 {% set css_files = css_files + ['_static/css/custom.css'] %}
-
+{% set script_files = []  %}
+{% block extrahead %}
+<script type="text/javascript" src="_static/js/bug.js"></script>
+{% endblock %}
