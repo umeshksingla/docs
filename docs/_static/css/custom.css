@@ -16,49 +16,7 @@
   color: #8a6d3b;
 }
 
-.report-button {
-    background-color: #fab814;
-    border-radius: 4px;
-    text-indent: 0;
-    border: 1px solid #e65f44;
-    display: inline-block;
-    color: #dd4814;
-    font-size: 14px;
-    font-style: normal;
-    line-height: 20px;
-    width: auto;
-    text-decoration: none;
-    text-align: center;
-    padding: 10px 15px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.report-button:hover {
-    background-color:#f2ab1e;
-}
-
 .bug-form {
-    display: none;
     margin-top: 5px;
     margin-bottom: 5px;
-}
-
-.bug-form input, .bug-form textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 0.5em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.modal-header, h4, .close {
-    background-color: #5cb85c;
-    color: #fff !important;
-    text-align: center;
-    font-size: 30px;
-}
-
-.modal-footer {
-    background-color: #f9f9f9;
 }
