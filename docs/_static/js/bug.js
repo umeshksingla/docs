@@ -4,17 +4,33 @@ console.log(window.location.href);
 var baseUrl = "https://test-odl-docs.atlassian.net/rest";
 var authUrl = "/auth/1/session";
 
-function showLoginForm() {
-    //$.noConflict(true);
-    (function ($) {
-        $('#myModal').modal('show');
-    }
-    )(jQuery);
+function toggleLoginForm(show) {
+    document.getElementById("jira-form").classList.toggle(show);
 }
 
-function toggleFeedbackForm() {
-    document.getElementById("myForm").classList.toggle("show");
-    check_login();
+function toggleFeedbackForm(show) {
+    document.getElementById("feedback-form").classList.toggle(show);
+}
+
+function hideFeedbackButton() {
+    document.getElementById("bug-form").style.display = 'block';
+    document.getElementById("give-feedback-button").style.display = 'none';
+}
+
+function showFeedbackButton(){
+    document.getElementById("bug-form").style.display = 'none';
+    document.getElementById("give-feedback-button").style.display = 'block';
+}
+
+function giveFeedback() {
+    if (check_login()) {
+        toggleFeedbackForm("show");
+        toggleLoginForm("hide");
+    } else {
+        toggleFeedbackForm("hide");
+        toggleLoginForm("show");
+    }
+    hideFeedbackButton();
 }
 
 function isLoggedInAPI() {
@@ -53,21 +69,16 @@ function loginAPI(username, password) {
 }
 
 function check_login() {
-
-    var logged_in = false;
+    var logged_in = true;
     console.log('checking login');
-
-
-    var submit_btn = document.getElementById("submit-btn");
-    var login_btn = document.getElementById("login-btn");
 
     //logged_in = isLoggedInAPI();
     console.log(logged_in);
-    if (logged_in) {
-        submit_btn.style.display = 'block';
-        login_btn.style.display = 'none';
-    } else {
-        submit_btn.style.display = 'none';
-        login_btn.style.display = 'block';
-    }
+    return logged_in;
+}
+
+function login() {
+    // if successful login
+    toggleFeedbackForm("show");
+    toggleLoginForm("hide");
 }
