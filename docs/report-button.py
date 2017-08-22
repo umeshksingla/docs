@@ -19,7 +19,6 @@ class ButtonDirective(Directive):
 	required_arguments = 0
 
 	option_spec = {
-	    'link': unchanged,
 	    'text': unchanged
 	}
 
@@ -30,7 +29,6 @@ class ButtonDirective(Directive):
 		app = env.app
 
 		node = button_node()
-		node['link'] = self.options['link']
 		node['text'] = self.options['text']
 		return [node]
 
@@ -44,7 +42,6 @@ def render(template, context):
 
 def visit_button_node(self, node):
 	context = {
-		'link': node['link'],
 		'text': node['text'],
 	}
 	html = render('_templates/bug-form.html', context)
