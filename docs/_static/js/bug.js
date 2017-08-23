@@ -1,4 +1,3 @@
-console.log('umesh');
 console.log(window.location.href);
 
 var baseUrl = "https://jira.opnfv.org/rest";
@@ -188,6 +187,8 @@ function createIssue(argument) {
     var smry = $('#smry').val();
     var desc = $('#desc').val();
 
+    desc += "\n\n Reported at: " + window.location.href;
+
     console.log(smry);
     console.log(desc);
 
@@ -195,8 +196,8 @@ function createIssue(argument) {
         alert("Thanks for feedback!")
         showFeedbackButton();
     } else {
-        if (!smry || !desc) {
-            alert("Summary and Description cannot be empty");
+        if (!smry) {
+            alert("Summary cannot be empty");
         }
         else {
             alert("Unknown Error Occurred. Feedback not submitted");
