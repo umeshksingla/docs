@@ -8,7 +8,11 @@ var issueUrl = "/api/2/issue";
 var docsProjectID = "10309";
 var issueTypeID = "4"; // for "Improvement"
 var priorityTypeID = "5"; // for "Trivial"
+var versionId = "";
+
 var username = "";
+var sessionCookie = "";
+
 
 function toggleLoginForm(s, b) {
     var h;
@@ -19,6 +23,7 @@ function toggleLoginForm(s, b) {
     jira_form.classList.toggle(h, !b);
 }
 
+
 function toggleFeedbackForm(s, b) {
     var h;
     var feedback_form = document.getElementById("feedback-form");
@@ -28,10 +33,12 @@ function toggleFeedbackForm(s, b) {
     feedback_form.classList.toggle(h, !b);
 }
 
+
 function hideFeedbackButton() {
     document.getElementById("bug-form").style.display = 'block';
     document.getElementById("give-feedback-button").style.display = 'none';
 }
+
 
 function showFeedbackButton() {
     document.getElementById("bug-form").style.display = 'none';
@@ -39,6 +46,7 @@ function showFeedbackButton() {
     toggleFeedbackForm("hide", true);
     toggleLoginForm("hide", true);
 }
+
 
 function giveFeedback() {
     if (isLoggedIn()) {
@@ -51,7 +59,9 @@ function giveFeedback() {
     hideFeedbackButton();
 }
 
+
 function isLoggedInAPI() {
+
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -60,24 +70,27 @@ function isLoggedInAPI() {
         "headers": {}
     }
 
-    $.ajax(settings).done(function (response) {
-        console.log(response);
-        if (response) {
-
+    $.ajax(settings).done(function (data, statusText) {
+        console.log(data);
+        if (statusText == "success") {
+            username = data.name;
+            return true;
+        } else {
+            return false;
         }
     })
 }
 
+
 function isLoggedIn() {
     var logged_in = false;
     console.log('checking login');
-
-    //logged_in = isLoggedInAPI();
-    console.log(logged_in);
-    return logged_in;
+    return isLoggedInAPI();
 }
 
-function loginAPI(username, password) {
+
+function loginAPI(usr, psw) {
+
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -88,22 +101,40 @@ function loginAPI(username, password) {
         },
         "processData": false,
         "data": {
-            "username": username,
-            "password": password
+            "username": usr,
+            "password": psw
         }
     }
 
-    $.ajax(settings).done(function (response) {
-        console.log(response);
+    $.ajax(settings).done(function (data, statusText) {
+        console.log(data);
+        if (statusText == "success") {
+            sessionCookie = data.session.value;
+            username = usr;
+            return true;
+        } else {
+            return false;
+        }
     })
 }
 
+
 function login() {
-    console.log($('#usr').val())
-    // if successful login
-    toggleFeedbackForm("show");
-    toggleLoginForm("hide");
+
+    var usr = $('#usr').val();
+    var psw = $('#psw').val();
+
+    console.log(usr);
+    console.log(psw);
+
+    if (usr && psw && loginAPI(usr, psw)) {
+        toggleFeedbackForm("show", true);
+        toggleLoginForm("hide", true);
+    } else {
+        alert("Invalid Credentials. Try again.")
+    }
 }
+
 
 function createIssueAPI(summary, description) {
 
@@ -131,16 +162,44 @@ function createIssueAPI(summary, description) {
                 "labels":[
                     "website"
                 ],
+                "versions": [
+                    {
+                        "id": versionId
+                    }
+                ],
                 "description": description
             }
         }
     }
 
-    $.ajax(settings).done(function (response) {
-      console.log(response);
+    $.ajax(settings).done(function (data, statusText) {
+        console.log(response);
+        if (statusText == "success") {
+            return true;
+        } else {
+            return false;
+        }
     });
 }
 
+
 function createIssue(argument) {
 
+    var smry = $('#smry').val();
+    var desc = $('#desc').val();
+
+    console.log(smry);
+    console.log(desc);
+
+    if (smry && desc && createIssueAPI(smry, desc)) {
+        alert("Thanks for feedback!")
+        showFeedbackButton();
+    } else {
+        if (!smry || !desc) {
+            alert("Summary and Description cannot be empty");
+        }
+        else {
+            alert("Unknown Error Occurred. Feedback not submitted");
+        }
+    }
 }
