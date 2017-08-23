@@ -62,6 +62,9 @@ function isLoggedInAPI() {
 
     $.ajax(settings).done(function (response) {
         console.log(response);
+        if (response) {
+
+        }
     })
 }
 
@@ -110,27 +113,26 @@ function createIssueAPI(summary, description) {
         "url": baseUrl + issueUrl,
         "method": "POST",
         "headers": {
-        "content-type": "application/json"
+            "content-type": "application/json"
         },
         "processData": false,
         "data": {
-            "project":{
-                "id": docsProjectID
-            },
-            "summary": summary,
-            "issuetype":{
-                "id": issueTypeID
-            },
-            "reporter":{
-                "name": username
-            },
-            "priority":{
-                "id": priorityTypeID
-            },
-            "labels":[
-                "website"
-            ],
-            "description": description
+            "fields" : {
+                "project":{
+                    "id": docsProjectID
+                },
+                "summary": summary,
+                "issuetype":{
+                    "id": issueTypeID
+                },
+                "priority":{
+                    "id": priorityTypeID
+                },
+                "labels":[
+                    "website"
+                ],
+                "description": description
+            }
         }
     }
 
