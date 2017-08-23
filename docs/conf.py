@@ -338,8 +338,3 @@ if platform.system() != 'Windows':
     # times. readthedocs timesout after 902 seconds.
     if javasphinx_available:
         subprocess.call(["./generate-javaapidoc.sh"])
-
-
-def setup(app):
-    pass
-    #app.add_javascript('js/bug.js')

@@ -14,7 +14,7 @@
         <div class="" id="jira-form">
             <p style="padding-top: 8px"> You need to log In with JIRA to submit feedback</p>
             <div id="" class="row">
-                <form role="form">
+                <div role="form">
                     <div class="form-group col-sm-5">
                         <label for="usr"><span class="glyphicon glyphicon-user"></span> Username</label>
                         <input type="text" class="form-control" id="usr" placeholder="JIRA username">
@@ -24,7 +24,9 @@
                         <input type="password" class="form-control" id="psw" placeholder="JIRA password">
                     </div>
                     <div class="col-sm-2" style="margin-top: 25px">
-                        <button onclick="login()" class="btn btn-default">
+                        <button
+                            class="btn btn-default"
+                            onclick="login()">
                             Login
                         </button>
                     </div>
@@ -36,19 +38,19 @@
                             Cancel
                         </button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
         <div class="" id="feedback-form">
             <p style="padding-top: 8px">Your suggestion: </p>
             <div id="" class="row">
-                <form role="form">
+                <div role="form">
                     <div class="form-group col-sm-12">
                         <input
                             type="text"
                             class="form-control"
                             placeholder="Summary"
-                            name="summary">
+                            id="smry">
                     </div>
                     <div class="form-group col-sm-12">
                         <textarea
@@ -57,13 +59,13 @@
                             wrap="hard"
                             class="form-control"
                             placeholder="Description"
-                            name="description"></textarea>
+                            id="desc"></textarea>
                     </div>
                     <div class="form-group col-sm-3">
                         <button
                             id="submit-btn"
                             class="btn btn-block btn-success"
-                            onclick="console.log('submitting')">
+                            onclick="createIssue()">
                             Submit
                         </button>
                     </div>
@@ -75,7 +77,7 @@
                             Cancel
                         </button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
