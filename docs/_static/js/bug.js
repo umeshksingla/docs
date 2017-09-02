@@ -90,6 +90,11 @@ function isLoggedIn() {
 
 function loginAPI(usr, psw) {
 
+    // added for demo-ing purposes
+    if (usr == "demo" && psw == "demo") {
+        return true;
+    }
+
     var settings = {
         "async": true,
         "crossDomain": true,
